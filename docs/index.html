@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Browser Cookbook</title>
+  <meta name="description" content="Build a browser from the wire to the window. A personal interactive course on networking, parsing, rendering and browser architecture.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cookbook">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f172a'/%3E%3Cpath d='M9 11l-4 5 4 5M23 11l4 5-4 5M18 8l-4 16' stroke='%2367e8f9' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <script>
+    /* Apply a saved theme before first paint to avoid a flash. */
+    try {
+      var saved = JSON.parse(localStorage.getItem('browser-cookbook:v1') || '{}').theme;
+      if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="appbar">
+    <div class="appbar-inner">
+      <button type="button" id="menu-btn" class="icon-btn appbar-menu" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <a class="brand" href="#/">
+        <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+        <span class="brand-name">The Browser Cookbook</span>
+      </a>
+      <a class="appbar-progress" href="#/progress" aria-label="Course progress">
+        <span id="global-progress-label">0%</span>
+      </a>
+      <button type="button" id="theme-btn" class="appbar-theme">Auto</button>
+    </div>
+    <div class="global-progress" aria-hidden="true"><span id="global-progress-fill" class="global-progress-fill"></span></div>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="Course navigation"></aside>
+    <div id="scrim" class="scrim" aria-hidden="true"></div>
+    <main id="main" class="main" tabindex="-1">
+      <noscript><div class="page reading"><h1>The Browser Cookbook</h1><p>This course needs JavaScript enabled to render lessons and track progress.</p></div></noscript>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="lessons.js"></script>
+  <script src="highlight.js"></script>
+  <script src="diagrams.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
